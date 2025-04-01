@@ -1,46 +1,46 @@
 # -*- coding: utf-8 -*-
-
+from item import AgedBrie,BackstagePass,Sulfuras,RegularItem
+from product_list import ProductList
 class GildedRose(object):
 
     def __init__(self, items):
         self.items = items
 
+    @classmethod
+    def create_item(cls, name, sell_in, quality):
+        if name == ProductList.AGED_BRIE:
+            return AgedBrie(name, sell_in, quality)
+        elif name == ProductList.BACK_STAGE_PASSES:
+            return BackstagePass(name, sell_in, quality)
+        elif name == ProductList.SULFURAS:
+            return Sulfuras(name, sell_in, quality)
+        else:
+            return RegularItem(name, sell_in, quality)
+
     def update_quality(self):
         for item in self.items:
-            if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
-                if item.quality > 0:
-                    if item.name != "Sulfuras, Hand of Ragnaros":
-                        item.quality = item.quality - 1
-            else:
-                if item.quality < 50:
-                    item.quality = item.quality + 1
-                    if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                        if item.sell_in < 11:
-                            if item.quality < 50:
-                                item.quality = item.quality + 1
-                        if item.sell_in < 6:
-                            if item.quality < 50:
-                                item.quality = item.quality + 1
-            if item.name != "Sulfuras, Hand of Ragnaros":
-                item.sell_in = item.sell_in - 1
-            if item.sell_in < 0:
-                if item.name != "Aged Brie":
-                    if item.name != "Backstage passes to a TAFKAL80ETC concert":
-                        if item.quality > 0:
-                            if item.name != "Sulfuras, Hand of Ragnaros":
-                                item.quality = item.quality - 1
-                    else:
-                        item.quality = item.quality - item.quality
-                else:
-                    if item.quality < 50:
-                        item.quality = item.quality + 1
+            print(item)
+            item.update_quality()
 
 
-class Item:
-    def __init__(self, name, sell_in, quality):
-        self.name = name
-        self.sell_in = sell_in
-        self.quality = quality
+items = [
+        GildedRose.create_item("Regular Item", 10, 20),
+        GildedRose.create_item("Aged Brie", 5, 10),
+        GildedRose.create_item("Backstage passes to a TAFKAL80ETC concert", 12, 20),
+        GildedRose.create_item("Sulfuras, Hand of Ragnaros", 0, 80)
+    ]
 
-    def __repr__(self):
-        return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
+gilded_rose = GildedRose(items)
+gilded_rose.update_quality()
+
+
+
+
+
+
+
+
+
+
+
+
