@@ -23,16 +23,6 @@ class GildedRose(object):
             item.update_quality()
 
 
-# items = [
-#         GildedRose.create_item("Regular Item", 10, 20),
-#         GildedRose.create_item("Aged Brie", 5, 10),
-#         GildedRose.create_item("Backstage passes to a TAFKAL80ETC concert", 12, 20),
-#         GildedRose.create_item("Sulfuras, Hand of Ragnaros", 0, 80)
-#     ]
-#
-# gilded_rose = GildedRose(items)
-# gilded_rose.update_quality()
-
 
 
 
