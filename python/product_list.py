@@ -1,5 +1,5 @@
 from enum import Enum
-class ProductList:
+class ProductList(str,Enum):
     AGED_BRIE="Aged Brie"
     BACK_STAGE_PASSES="Backstage passes to a TAFKAL80ETC concert"
     SULFURAS="Sulfuras, Hand of Ragnaros"
